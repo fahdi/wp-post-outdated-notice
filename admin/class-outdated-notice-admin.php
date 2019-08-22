@@ -41,6 +41,15 @@ class Outdated_Notice_Admin {
 	private $version;
 
 	/**
+	 * The options name to be used in this plugin
+	 *
+	 * @since    1.0.0
+	 * @access    private
+	 * @var    string $option_name Option name of this plugin
+	 */
+	private $option_name = 'outdated_notice';
+
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @param string $plugin_name The name of this plugin.
@@ -125,6 +134,92 @@ class Outdated_Notice_Admin {
 	 */
 	public function display_options_page() {
 		include_once 'partials/outdated-notice-admin-display.php';
+	}
+
+	public function register_setting() {
+
+		// Add a General section
+		add_settings_section(
+			$this->option_name . '_general',
+			__( 'General', 'outdated-notice' ),
+			[ $this, $this->option_name . '_general_cb' ],
+			$this->plugin_name
+		);
+
+		add_settings_field(
+			$this->option_name . '_position',
+			__( 'Text position', 'outdated-notice' ),
+			array( $this, $this->option_name . '_position_cb' ),
+			$this->plugin_name,
+			$this->option_name . '_general',
+			array( 'label_for' => $this->option_name . '_position' )
+		);
+
+		add_settings_field(
+			$this->option_name . '_day',
+			__( 'Post is outdated after', 'outdated-notice' ),
+			array( $this, $this->option_name . '_day_cb' ),
+			$this->plugin_name,
+			$this->option_name . '_general',
+			array( 'label_for' => $this->option_name . '_day' )
+		);
+
+		register_setting( $this->plugin_name, $this->option_name . '_position', array( $this, $this->option_name . '_sanitize_position' ) );
+		register_setting( $this->plugin_name, $this->option_name . '_day', 'intval' );
+	}
+
+	/**
+	 * Render the text for the general section
+	 *
+	 * @since  1.0.0
+	 */
+	public function outdated_notice_general_cb() {
+		echo '<p>' . __( 'Please change the settings accordingly.', 'outdated-notice' ) . '</p>';
+	}
+
+	/**
+	 * Render the treshold day input for this plugin
+	 *
+	 * @since  1.0.0
+	 */
+	public function outdated_notice_day_cb() {
+		$day = get_option( $this->option_name . '_day' );
+		echo '<input type="text" name="' . $this->option_name . '_day' . '" id="' . $this->option_name . '_day' . '" value="' . $day . '"> ' . __( 'days', 'outdated-notice' );
+	}
+
+	/**
+	 * Render the radio input field for position option
+	 *
+	 * @since  1.0.0
+	 */
+	public function outdated_notice_position_cb() {
+		$position = get_option( $this->option_name . '_position' );
+		?>
+		<fieldset>
+			<label>
+				<input type="radio" name="<?php echo $this->option_name . '_position' ?>" id="<?php echo $this->option_name . '_position' ?>" value="before" <?php checked( $position, 'before' ); ?>>
+				<?php _e( 'Before the content', 'outdated-notice' ); ?>
+			</label>
+			<br>
+			<label>
+				<input type="radio" name="<?php echo $this->option_name . '_position' ?>" value="after" <?php checked( $position, 'after' ); ?>>
+				<?php _e( 'After the content', 'outdated-notice' ); ?>
+			</label>
+		</fieldset>
+		<?php
+	}
+
+	/**
+	 * Sanitize the text position value before being saved to database
+	 *
+	 * @param  string $position $_POST value
+	 * @since  1.0.0
+	 * @return string           Sanitized value
+	 */
+	public function outdated_notice_sanitize_position( $position ) {
+		if ( in_array( $position, array( 'before', 'after' ), true ) ) {
+			return $position;
+		}
 	}
 
 }
