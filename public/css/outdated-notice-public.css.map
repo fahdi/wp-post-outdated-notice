@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA;;;GAGG;AAEH,gBAAiB;EACf,MAAM,EAAE,qBAAqB;EAC7B,aAAa,EAAE,GAAG;EAClB,aAAa,EAAE,IAAI;EACnB,OAAO,EAAE,IAAI;EAEb,yBAAW;IACT,gBAAgB,EAAE,OAAO;IACzB,YAAY,EAAE,OAAO;IACrB,KAAK,EAAE,OAAO;EAGhB,4BAAc;IACZ,gBAAgB,EAAE,OAAO;IACzB,YAAY,EAAE,OAAO;IACrB,KAAK,EAAE,OAAO",
+"sources": ["outdated-notice-public.scss"],
+"names": [],
+"file": "outdated-notice-public.css"
+}

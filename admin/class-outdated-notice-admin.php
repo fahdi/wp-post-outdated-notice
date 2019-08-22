@@ -178,7 +178,7 @@ class Outdated_Notice_Admin {
 	}
 
 	/**
-	 * Render the treshold day input for this plugin
+	 * Render the threshold day input for this plugin
 	 *
 	 * @since  1.0.0
 	 */

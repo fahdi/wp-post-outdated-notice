@@ -181,6 +181,8 @@ class Outdated_Notice {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
+		$this->loader->add_action( 'the_content', $plugin_public, 'the_content' );
+
 	}
 
 	/**

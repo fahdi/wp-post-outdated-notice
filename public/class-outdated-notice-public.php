@@ -100,4 +100,44 @@ class Outdated_Notice_Public {
 
 	}
 
+	public function the_content( $post_content ) {
+
+		if ( is_main_query() && is_singular('post') ) {
+			$position  = get_option( 'outdated_notice_position', 'before' );
+			$days      = (int) get_option( 'outdated_notice_day', 0 );
+			$date_now  = new DateTime( current_time('mysql') );
+			$date_old  = new DateTime( get_the_modified_time('Y-m-d H:i:s') );
+			$date_diff = $date_old->diff( $date_now );
+
+			if ( $date_diff->days > $days ) {
+				$class = 'is-outdated';
+			} else {
+				$class = 'is-fresh';
+			}
+
+			// Filter the text
+			$notice = sprintf(
+				_n(
+					'This post was last updated %s day ago.',
+					'This post was last updated %s days ago.',
+					$date_diff->days,
+					'outdated-notice'
+				),
+				$date_diff->days
+			);
+
+			// Add the class
+			$notice = '<div class="outdated-notice %s">' . $notice . '</div>';
+			$notice = sprintf( $notice, $class );
+
+			if ( 'after' == $position ) {
+				$post_content .= $notice;
+			} else {
+				$post_content = $notice . $post_content;
+			}
+		}
+
+		return $post_content;
+	}
+
 }
