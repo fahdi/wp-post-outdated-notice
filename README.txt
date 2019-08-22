@@ -1,6 +1,6 @@
 === Wordpress Post Outdated Notice ===
 Contributors: fahdi
-Donate link: https://fahdmurtaza.com
+Donate link: https://www.fahdmurtaza.com
 Tags: comments, spam
 Requires at least: 3.0.1
 Tested up to: 3.4
