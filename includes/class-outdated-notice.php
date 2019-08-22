@@ -3,8 +3,8 @@
 /**
  * The file that defines the core plugin class
  *
- * A class definition that includes attributes and functions used across both the
- * public-facing side of the site and the admin area.
+ * A class definition that includes attributes and functions used across both
+ * the public-facing side of the site and the admin area.
  *
  * @link       http://fahdmurtaza.com
  * @since      1.0.0
@@ -30,12 +30,13 @@
 class Outdated_Notice {
 
 	/**
-	 * The loader that's responsible for maintaining and registering all hooks that power
-	 * the plugin.
+	 * The loader that's responsible for maintaining and registering all hooks
+	 * that power the plugin.
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Outdated_Notice_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Outdated_Notice_Loader $loader Maintains and registers all
+	 *     hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -44,7 +45,8 @@ class Outdated_Notice {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
+	 * @var      string $plugin_name The string used to uniquely identify this
+	 *     plugin.
 	 */
 	protected $plugin_name;
 
@@ -53,16 +55,16 @@ class Outdated_Notice {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $version    The current version of the plugin.
+	 * @var      string $version The current version of the plugin.
 	 */
 	protected $version;
 
 	/**
 	 * Define the core functionality of the plugin.
 	 *
-	 * Set the plugin name and the plugin version that can be used throughout the plugin.
-	 * Load the dependencies, define the locale, and set the hooks for the admin area and
-	 * the public-facing side of the site.
+	 * Set the plugin name and the plugin version that can be used throughout
+	 * the plugin. Load the dependencies, define the locale, and set the hooks
+	 * for the admin area and the public-facing side of the site.
 	 *
 	 * @since    1.0.0
 	 */
@@ -89,9 +91,11 @@ class Outdated_Notice {
 	 * - Outdated_Notice_Loader. Orchestrates the hooks of the plugin.
 	 * - Outdated_Notice_i18n. Defines internationalization functionality.
 	 * - Outdated_Notice_Admin. Defines all hooks for the admin area.
-	 * - Outdated_Notice_Public. Defines all hooks for the public side of the site.
+	 * - Outdated_Notice_Public. Defines all hooks for the public side of the
+	 * site.
 	 *
-	 * Create an instance of the loader which will be used to register the hooks
+	 * Create an instance of the loader which will be used to register the
+	 * hooks
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -129,8 +133,8 @@ class Outdated_Notice {
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Outdated_Notice_i18n class in order to set the domain and to register the hook
-	 * with WordPress.
+	 * Uses the Outdated_Notice_i18n class in order to set the domain and to
+	 * register the hook with WordPress.
 	 *
 	 * @since    1.0.0
 	 * @access   private
@@ -188,8 +192,8 @@ class Outdated_Notice {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
+	 * @since     1.0.0
 	 */
 	public function get_plugin_name() {
 		return $this->plugin_name;
@@ -198,8 +202,9 @@ class Outdated_Notice {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
+	 * @return    Outdated_Notice_Loader    Orchestrates the hooks of the
+	 *     plugin.
 	 * @since     1.0.0
-	 * @return    Outdated_Notice_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;
@@ -208,8 +213,8 @@ class Outdated_Notice {
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     1.0.0
 	 * @return    string    The version number of the plugin.
+	 * @since     1.0.0
 	 */
 	public function get_version() {
 		return $this->version;
